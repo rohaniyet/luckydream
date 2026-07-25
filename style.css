@@ -10,31 +10,45 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     text-align: center;
 }
 
-/* Removed Card Design - Floating Content */
+#dollars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
 .content-wrapper {
     z-index: 10;
     position: relative;
     padding: 20px;
     max-width: 800px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Smooth Gold Text with Soft Glow */
 .premium-glow {
     font-size: 5.5rem;
-    color: #FFDF73; /* Smooth Gold instead of White */
+    color: #B8860B; /* Dark Gold Color */
     margin: 0 0 10px 0;
     text-transform: uppercase;
     letter-spacing: 4px;
     font-weight: 900;
     text-shadow: 
-        0 0 10px rgba(255, 223, 115, 0.4), 
-        0 0 25px rgba(218, 165, 32, 0.7), 
-        0 0 45px rgba(218, 165, 32, 0.9);
+        -30px 0 40px rgba(218, 165, 32, 0.9), /* Left side gold glow */
+        30px 0 40px rgba(218, 165, 32, 0.9),  /* Right side gold glow */
+        0 0 15px rgba(184, 134, 11, 0.6);     /* Center base glow */
 }
 
 .tagline {
@@ -65,7 +79,7 @@ body {
     font-size: 1.3rem;
     font-weight: 900;
     color: #111;
-    border-radius: 50px; /* Pill shape for a premium feel */
+    border-radius: 50px;
     cursor: pointer;
     box-shadow: 0 10px 25px rgba(218, 165, 32, 0.2), inset 0 0 10px rgba(255, 255, 255, 0.3);
     transition: all 0.4s ease;
@@ -79,12 +93,11 @@ body {
     background-position: right center;
 }
 
-/* Background Dollars */
 .dollar {
     position: absolute;
     color: #FFD700;
     font-weight: bold;
-    opacity: 0.25; /* Kept subtle so it doesn't distract from the main text */
+    opacity: 0.25;
     text-shadow: 0 0 10px #DAA520;
     animation: fly linear infinite;
     z-index: 1;
@@ -95,32 +108,33 @@ body {
     100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
-/* Highly Attractive Mobile View */
 @media (max-width: 768px) {
+    .content-wrapper {
+        padding: 0 15px;
+    }
+    
     .premium-glow {
         font-size: 3.2rem;
         letter-spacing: 2px;
         text-shadow: 
-            0 0 10px rgba(255, 223, 115, 0.5), 
-            0 0 20px rgba(218, 165, 32, 0.8);
+            -20px 0 30px rgba(218, 165, 32, 0.9), 
+            20px 0 30px rgba(218, 165, 32, 0.9);
     }
     
     .tagline {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         letter-spacing: 1px;
-        padding: 0 15px;
     }
     
     .sub-text {
         font-size: 0.95rem;
-        padding: 0 25px;
         margin-bottom: 35px;
     }
     
     .cta-btn {
         font-size: 1.1rem;
         padding: 16px 30px;
-        width: 85%; /* Makes the button wide and prominent on mobile */
-        max-width: 320px;
+        width: 100%;
+        max-width: 300px;
     }
 }
